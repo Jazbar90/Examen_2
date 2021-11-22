@@ -1,0 +1,55 @@
+﻿@page
+@model WebApp.Pages.Ordenes.EditModel
+@{
+}
+
+
+<div id="AppEdit" class="container" data-entity="@JsonSerializer.Serialize(Model.Entity)" v-cloak>
+
+    <div class="card">
+        <div class="card-header">
+            Orden
+        </div>
+        <div class="card-body">
+            <form id="FordEdit" method="post">
+                <input type="hidden" asp-for="Entity.IdOrden" v-model="Entity.IdOrden"/>
+
+                <div class="form-group mb-3">
+                    <label for="Entity.IdOrden" class="form-label">IdOrden</label>
+                    <input type="number" class="form-control" asp-for="Entity.IdOrden" v-model="Entity.IdOrden" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Entity.IdProducto" class="form-label">IdProducto</label>
+                    <input type="number" class="form-control" asp-for="Entity.IdProducto" v-model="Entity.IdProducto" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Entity.CantidadProducto" class="form-label">Cantidad Producto</label>
+                    <input type="number" class="form-control" asp-for="Entity.CantidadProducto" v-model="Entity.CantidadProducto"required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="Entity.Estado" class="form-label">Estado</label>
+                    <input type="text" class="form-control" asp-for="Entity.Estado" v-model="Entity.Estado" maxlength="250" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" @@click="Save"      class="btn btn-primary">
+                            @(Model.id.HasValue?"Actualizar":"Agregar")
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/App/Orden/Edit.js"></script>
+
+}

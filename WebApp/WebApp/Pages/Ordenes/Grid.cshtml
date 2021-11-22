@@ -1,0 +1,54 @@
+﻿@page
+@model WebApp.Pages.Ordenes.GridModel
+@{
+}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            Orden
+        </div>
+        <div class="card-body">
+            <a class="btn btn-primary" asp-page="Edit"><i class='bx bxs-add-to-queue'></i></a>
+            <div class="row">
+                <div class="col-12">
+                    <table id="GridView" class="table table-bordered table table-striped table table-hover">
+                        <thead>
+                            <tr>
+                                <th>IdOrden</th>
+                                <th>IdProducto</th>
+                                <th>Cantidad Producto</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.GridList)
+                            {
+                                <tr>
+                                    <td>@item.IdOrden</td>
+                                    <td>@item.CantidadProducto</td>
+                                    <td>@item.Estado</td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-page="Edit" asp-route-id="@item.IdOrden"><box-icon type='solid' name='edit-alt'></box-icon></a>
+
+                                        <button type="button" class="btn btn-danger" onclick="OrdenGrid.OnclickEliminar(@item.IdOrden)">
+                                            <box-icon type='solid' name='trash'></box-icon>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+@section Scripts{
+
+    <script defer src="~/App/Orden/Grid.js"></script>
+
+}
